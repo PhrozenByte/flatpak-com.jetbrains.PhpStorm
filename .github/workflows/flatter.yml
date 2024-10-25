@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    name: Build with Flatter
+    name: Build Flatpak with Flatter
 
     runs-on: ubuntu-latest
     container:
@@ -58,12 +58,13 @@ jobs:
           upload-bundles: true
           upload-pages-artifact: ${{ matrix.arch == 'aarch64' }}
           upload-pages-includes: |
+            flatter/_config.yml
             flatter/base.css
             flatter/default.css
             flatter/index.html
 
   deploy:
-    name: Deploy to GitHub Pages
+    name: Build GitHub Pages website
 
     runs-on: ubuntu-latest
     needs: build
@@ -77,6 +78,31 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: GitHub Pages
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+
+      - name: Delete artifacts
+        uses: geekyeggo/delete-artifact@v5
+        with:
+          name: '*'
+
+      - name: Prepare website
+        shell: bash --noprofile --norc -eu -o pipefail -x {0}
+        run: |
+          mkdir src/
+          tar -C src/ -xvf github-pages/artifact.tar
+          mv com.jetbrains.PhpStorm-x86_64/com.jetbrains.PhpStorm.flatpak src/com.jetbrains.PhpStorm-x86_64.flatpak
+          mv com.jetbrains.PhpStorm-aarch64/com.jetbrains.PhpStorm.flatpak src/com.jetbrains.PhpStorm-aarch64.flatpak
+
+      - name: Build website with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: src/
+          verbose: true
+
+      - name: Upload website artifact
+        uses: actions/upload-pages-artifact@v3
+
+      - name: Deploy website to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

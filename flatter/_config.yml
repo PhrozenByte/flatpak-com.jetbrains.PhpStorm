@@ -1,0 +1,18 @@
+title: PhpStorm 2023.2.7 on Flatter
+description: Install PhpStorm 2023.2.7 using a Flatter Flatpak repository.
+
+ref: com.jetbrains.PhpStorm
+project: PhpStorm 2023.2.7
+headline: "Install [JetBrain](https://www.jetbrains.com/)'s
+  [PhpStorm 2023.2.7](https://www.jetbrains.com/phpstorm/)
+  as [Flatpak](https://flatpak.org/).\n
+  
+  Made possible by [Andy Holme](https://andyholmes.ca/)'s
+  [Flatter](https://github.com/andyholmes/flatter),
+  hosted on [GitHub Pages](https://pages.github.com/).
+  Check out our sources and the Flatpak's manifest on
+  [GitHub](https://github.com/PhrozenByte/flatpak-com.jetbrains.PhpStorm)."
+
+author:
+  name: Daniel Rudolf
+  url: https://www.daniel-rudolf.de

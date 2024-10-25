@@ -1,20 +1,23 @@
+---
+---
+
 <!DOCTYPE HTML>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
     <!-- Meta -->
-    <title>PhpStorm 2023.2.7 on Flatter</title>
-    <meta name="title" content="PhpStorm 2023.2.7 on Flatter"/>
-    <meta name="description" content="Install PhpStorm 2023.2.7 using a Flatter Flatpak repository."/>
-    <meta itemprop="name" content="PhpStorm 2023.2.7 on Flatter"/>
-    <meta itemprop="description" content="Install PhpStorm 2023.2.7 using a Flatter Flatpak repository."/>
+    <title>{{ site.title }}</title>
+    <meta name="title" content="{{ site.title }}"/>
+    <meta name="description" content="{{ site.description }}"/>
+    <meta itemprop="name" content="{{ site.title }}"/>
+    <meta itemprop="description" content="{{ site.description }}"/>
 
     <meta name="viewport" content="width=device-width"/>
 
     <!-- Open Graph -->
-    <meta property="og:title" content="PhpStorm 2023.2.7 on Flatter"/>
-    <meta property="og:description" content="Install PhpStorm 2023.2.7 using a Flatter Flatpak repository."/>
+    <meta property="og:title" content="{{ site.title }}"/>
+    <meta property="og:description" content="{{ site.description }}"/>
     <meta property="og:locale" content="en"/>
 
     <link rel="stylesheet" type="text/css" href="default.css" media="screen"/>
@@ -34,19 +37,8 @@
     </header>
 
     <section id="description">
-      <h2>PhpStorm 2023.2.7</h2>
-      <p class="content">
-        Install <a href="https://www.jetbrains.com/">JetBrain</a>'s
-        <a href="https://www.jetbrains.com/phpstorm/">PhpStorm 2023.2.7</a> as
-        <a href="https://flatpak.org/">Flatpak</a>.
-      </p>
-      <p class="content">
-        Made possible by <a href="https://andyholmes.ca/">Andy Holme's</a>
-        <a href="https://github.com/andyholmes/flatter">Flatter</a>,
-        hosted on <a href="https://pages.github.com/">GitHub Pages</a>.
-        Check out our sources and the Flatpak's manifest on
-        <a href="https://github.com/PhrozenByte/flatpak-com.jetbrains.PhpStorm">GitHub</a>.
-      </p>
+      <h2>{{ site.project }}</h2>
+      {{ site.headline | markdownify | replace: '<p>', '<p class="content">' }}
     </section>
 
     <section id="repository">
@@ -58,9 +50,12 @@
           </svg>
           <h3>Flatpak Repository</h3>
           <p>
-            Add the repository to your software manager.
+            Add the repository to your software manager. The repository distributes the following Flatpaks:
           </p>
-          <a href="https://phrozenbyte.github.io/flatpak-com.jetbrains.PhpStorm/index.flatpakrepo" class="pill">
+          <p>
+            <code>{{ site.ref }}</code>
+          </p>
+          <a href="index.flatpakrepo" class="pill">
             Enable Repository
           </a>
         </li>
@@ -77,7 +72,7 @@
           <p>
             For standard desktop and laptop computers, with AMD or Intel processors.
           </p>
-          <a href="https://nightly.link/PhrozenByte/flatpak-com.jetbrains.PhpStorm/workflows/flatter/master/com.jetbrains.PhpStorm-x86_64.zip" class="pill">
+          <a href="{{ site.ref }}-x86_64.flatpak" class="pill">
             Download (x86-64)
           </a>
         </li>
@@ -90,7 +85,7 @@
           <p>
             For ARM64-based devices, like the Pinebook Pro and Qualcomm Snapdragon X Elite notebooks.
           </p>
-          <a href="https://nightly.link/PhrozenByte/flatpak-com.jetbrains.PhpStorm/workflows/flatter/master/com.jetbrains.PhpStorm-aarch64.zip" class="pill">
+          <a href="{{ site.ref }}-aarch64.flatpak" class="pill">
             Download (aarch64)
           </a>
         </li>
@@ -99,9 +94,9 @@
 
     <footer>
       <div class="content">
-        Made with ♥ by <a href="https://daniel-rudolf.de">Daniel Rudolf</a><br>
+        Made with ♥ by <a href="{{ site.author.url }}">{{ site.author.name }}</a><br>
         Created with <a href="https://flatter.andyholmes.ca/">Flatter</a> by <a href="https://andyholmes.ca/">Andy Holmes</a><br>
-        <a href="https://github.com/PhrozenByte/flatpak-com.jetbrains.PhpStorm">View Sources on GitHub</a>
+        <a href="{{ site.github.repository_url }}">View Sources on GitHub</a>
       </div>
     </footer>
   </body>
